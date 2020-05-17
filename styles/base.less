@@ -1,22 +1,73 @@
-
-// Base
-// -------------------
-
-// Used for global styles
-// Or to override certain Atom core styles
-
-// -------------------
-
-
 body {
   font-size: @font-size;
   color: @text-color;
   background-color: @app-background-color;
 }
 
+a { color:@background-color-info; }
+
 atom-pane {
   border-right: 1px solid @base-border-color;
-  &:last-child {
-    border-right: none;
+  &:last-child { border-right: none; }
+}
+
+.input-checkbox:checked,
+.input-toggle:checked { background:@background-color-success; }
+
+
+// Styleguide
+.styleguide {
+  .styleguide-header {
+    padding:@component-padding * 3;
+    background:darken(@base-background-color, 3%);
+    border:0;
+  }
+  .styleguide-sections {
+    section {
+      background:
+      transparent;border:0;
+      h1.section-heading { margin-top:@component-padding * 4; }
+      h2 { margin-top:@component-padding * 4; }
+
+      .example-rendered {
+        background:darken(@base-background-color,6%);
+        border:0;
+        padding:@component-padding * 3;
+      }
+      .list-group .selected::before, .list-tree .selected::before { opacity:.4; }
+    }
   }
 }
+
+// Notifications
+atom-notifications atom-notification {
+  &:not(:last-of-type) { margin-bottom:@component-padding * 1; }
+  box-shadow:2px 2px 4px darken(@base-background-color,10%);
+  &::before { background:darken(@background-color-selected,2%)!important; }
+  &.fatal code, &.fatal a:not(.btn), &.fatal::before { color:@text-color-fatal!important; }
+  &.error code, &.error a:not(.btn), &.error::before { color:@text-color-error!important; }
+  &.warning code, &.warning a:not(.btn), &.warning::before { color:@text-color-warning!important; }
+  &.success code, &.success a:not(.btn), &.success::before { color:@text-color-success!important; }
+  &.info code, &.info a:not(.btn), &.info::before { color:@text-color-info!important; }
+  code { background:transparent!important;margin-top:@component-padding;display:block; }
+  .item { background:darken(@background-color-selected,4%); }
+  .message { color:@text-color-highlight; }
+  .detail { color:@text-color; }
+  .meta .description { color:@text-color-subtle; }
+  .btn.close-all { background:@background-color-selected;color:@text-color!important;border:0!important; }
+  .btn-copy-report::before { color:@text-color;vertical-align:middle; }
+  .close.icon { color:@text-color; &:hover { color:@text-color-highlight; } }
+
+}
+
+// Settings
+.settings-view {
+  .settings-panel .control-group + .control-group { margin-top:@component-padding * 4; }
+  .config-menu { background:darken(@base-background-color,3%); }
+  .package-card { background:darken(@background-color-selected,4%);border-radius:@component-border-radius; }
+  .alert-info { background:darken(@base-background-color,2%);color:@text-color-info; }
+}
+
+// Misc
+.input-checkbox { border-radius:@component-border-radius / 2; }
+.atom-dock-mask { background:lighten(@base-background-color,2%);border-left:2px solid @base-border-color; }
